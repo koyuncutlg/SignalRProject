@@ -56,7 +56,8 @@ namespace SignalRApi.Controllers
                 Description = createProductDto.Description,
                 ImageUrl = createProductDto.ImageUrl,
                 Price = createProductDto.Price,
-                ProductStatus = createProductDto.ProductStatus
+                ProductStatus = createProductDto.ProductStatus,
+                CategoryID =createProductDto.CategoryID
             });
             return Ok("Ürün Bilgisi Eklendi");
         }
@@ -67,7 +68,7 @@ namespace SignalRApi.Controllers
             _productService.TDelete(value);
             return Ok("Ürün Bilgisi Silindi");
         }
-        [HttpGet("GetProduct")]
+        [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
             var value = _productService.TGetByID(id);
@@ -83,7 +84,8 @@ namespace SignalRApi.Controllers
                 Description = updateProductDto.Description,
                 ImageUrl = updateProductDto.ImageUrl,
                 Price = updateProductDto.Price,
-                ProductStatus = updateProductDto.ProductStatus
+                ProductStatus = updateProductDto.ProductStatus,
+                CategoryID = updateProductDto.CategoryID
 
             });
             return Ok("Ürün Bilgisi Güncellendi");
