@@ -18,18 +18,11 @@ namespace SignalR.DataAccessLayer.EntityFramework
             var values = context.Products.Include(x=>x.Category).ToList();
             return values;
         }
-    }
-}
 
-//var context = new SignalRContext();
-//var values = context.Products.Include(x => x.Category).Select(y => new ResultProductWithCategory
-//{
-//    Description = y.Description,
-//    ImageUrl = y.ImageUrl,
-//    Price = y.Price,
-//    ProductID = y.ProductID,
-//    ProductName = y.ProductName,
-//    ProductStatus = y.ProductStatus,
-//    CategoryName = y.Category.CategoryName
-//});
-//return values.ToList();
+		public int ProductCount()
+		{
+			using var context = new SignalRContext();
+            return context.Products.Count();
+		}
+	}
+} 
