@@ -5,4 +5,16 @@
 
 --Kategori Adına Göre Ürün Sayısı 1
 --Kategori Adına Göre Ürün Sayısı 2
---Son Eklenen Kategori
+
+
+--Ortalama Fiyat
+--En Yüksek Ürünlü Fiyat
+--En Düşük Ürünlü Fiyat
+--Ortalama HAmburger Fiyatı
+
+--Toplam Sipariş Sayısı
+--AKtif Sipariş Sayısı
+--Son Sİpariş Tutarı
+--KAsadaki Tutar
+--Bugünkü Kazanç
+--MAsa Sayısı

@@ -13,7 +13,17 @@ namespace SignalR.BusinessLayer.Concrete
             _productDal = productDal;
         }
 
-        public void TAdd(Product entity)
+		public string TProductNameByMaxPrice()
+		{
+			return _productDal.ProductNameByMaxPrice();
+		}
+
+		public string TProductNameByMinPrice()
+		{
+            return _productDal.ProductNameByMinPrice();
+		}
+
+		public void TAdd(Product entity)
         {
             _productDal.Add(entity);
         }
@@ -51,6 +61,11 @@ namespace SignalR.BusinessLayer.Concrete
 		public int TProductCountByCategoryNameHamburger()
 		{
 			return _productDal.ProductCountByCategoryNameHamburger();
+		}
+
+		public decimal TProductPriceAvg()
+		{
+			return _productDal.ProductPriceAvg();
 		}
 
 		public void TUpdate(Product entity)
