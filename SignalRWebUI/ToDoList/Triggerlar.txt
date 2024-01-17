@@ -1,0 +1,38 @@
+﻿Sipariş Toplam Fiyatını Güncelleme
+---
+CREATE Trigger IncreaseOrderTotalPrice
+On OrderDetials
+After Insert
+As
+Declare @OrderID  int
+Declare @OrderPrice decimal
+Select @OrderID = OrderID From inserted 
+Select @OrderPrice = TotalPrice from inserted
+Update Orders Set TotalPrice=TotalPrice + @OrderPrice where OrderID = @OrderID
+
+-----
+CREATE Trigger DecreaseOrderTotalPrice
+On OrderDetials
+After Delete
+As
+Declare @OrderID  int
+Declare @OrderPrice decimal
+Select @OrderID = OrderID From deleted 
+Select @OrderPrice = TotalPrice from deleted
+Update Orders Set TotalPrice=TotalPrice - @OrderPrice where OrderID = @OrderID
+
+
+Kasa İşlemleri
+----
+Create Trigger SumMoneyCase
+On Orders
+After Update
+As
+Declare @Description Nvarchar(Max) 
+Declare @TotalPrice decimal(18,2)
+Select @Description = Description From inserted 
+Select @TotalPrice = TotalPrice from inserted
+if(@Description='Hesap Kapatıldı')
+Begin
+Update MoneyCases Set TotalAmount  = TotalAmount + @TotalPrice 
+End
