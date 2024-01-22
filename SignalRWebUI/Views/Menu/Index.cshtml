@@ -149,8 +149,9 @@
         function showproductid(value) {
             var id = value;
             $.ajax({
-                type: 'post',
+                type: 'POST',               
                 data: { item: id },
+                url: "/Menu/AddBasket/" + id,
                 contentType: 'json',
                 success: function () {
                     const Toast = Swal.mixin({
@@ -166,7 +167,7 @@
                     });
                     Toast.fire({
                         icon: "success",
-                        title: "Seçilen Ürün ID: " + id
+                        title: "Ürün ID: " + id + " Sepete Eklendi"
                     });
 
                 }
