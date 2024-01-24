@@ -70,6 +70,7 @@ namespace SignalRWebUI.Controllers
             }
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> UpdateNotification(UpdateNotificationDto updateNotificationDto)
         {
@@ -82,6 +83,18 @@ namespace SignalRWebUI.Controllers
                 return RedirectToAction("Index");
             }
             return View();
+        }             
+        public async Task<IActionResult> NotificationChangeToTrue(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            await client.GetAsync($"https://localhost:7027/api/Notification/NotificationChangeToTrue/{id}");             
+            return RedirectToAction("Index");
+        }            
+        public async Task<IActionResult> NotificationChangeToFalse(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            await client.GetAsync($"https://localhost:7027/api/Notification/NotificationChangeToFalse/{id}");             
+            return RedirectToAction("Index");
         }
     }
 }
